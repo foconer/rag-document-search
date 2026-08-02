@@ -24,6 +24,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.apache.pdfbox:pdfbox:3.0.3'
+	implementation 'com.knuddels:jtokkit:1.1.0'
 }
 
 tasks.named('test') {

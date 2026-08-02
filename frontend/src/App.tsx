@@ -1,26 +1,13 @@
-import { useEffect, useState } from "react";
-import { getHealth } from "./services/api";
+import DocumentUpload from "./components/DocumentUpload";
 
 function App() {
+    return (
+        <div>
+            <h1>Document RAG Assistant</h1>
 
-  const [status, setStatus] = useState("");
-
-  useEffect(() => {
-    getHealth()
-      .then(response => {
-        setStatus(response);
-      });
-  }, []);
-
-  return (
-    <div>
-      <h1>Document RAG Assistant</h1>
-
-      <p>
-        Backend Status: {status}
-      </p>
-    </div>
-  );
+            <DocumentUpload />
+        </div>
+    );
 }
 
 export default App;
