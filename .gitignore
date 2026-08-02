@@ -1,0 +1,43 @@
+# =====================
+# OS Files
+# =====================
+.DS_Store
+Thumbs.db
+
+# =====================
+# IDE
+# =====================
+.idea/
+.vscode/
+*.iml
+
+# =====================
+# Java / Spring Boot
+# =====================
+backend/.gradle/
+backend/build/
+*.class
+
+# Logs
+*.log
+
+# =====================
+# Node / React / Vite
+# =====================
+frontend/node_modules/
+frontend/dist/
+
+# Environment files
+.env
+.env.*
+
+# =====================
+# Docker
+# =====================
+docker-compose.override.yml
+
+# =====================
+# Temporary files
+# =====================
+*.tmp
+*.swp
