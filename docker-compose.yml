@@ -16,17 +16,17 @@ services:
     depends_on:
       - backend
    
-  # postgres:
-  #   image: pgvector/pgvector:pg17
-  #   container_name: rag-postgres
-  #   ports:
-  #     - "5432:5432"
-  #   environment:
-  #     POSTGRES_DB: rag
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: postgres
-  #   volumes:
-  #     - postgres-data:/var/lib/postgresql/data
+  postgres:
+    image: pgvector/pgvector:pg17
+    container_name: rag-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ragdb
+      POSTGRES_USER: raguser
+      POSTGRES_PASSWORD: ragpassword
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
 
   ollama:
     image: ollama/ollama:latest
@@ -35,8 +35,10 @@ services:
       - "11434:11434"
     volumes:
       - ollama-data:/root/.ollama
+      - ./ollama/init-ollama.sh:/init-ollama.sh
+    entrypoint: ["/bin/sh", "/init-ollama.sh"]
     restart: unless-stopped
 
 volumes:
-  #postgres-data:
+  postgres-data:
   ollama-data:
