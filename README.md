@@ -2,10 +2,6 @@
 
 A Retrieval-Augmented Generation (RAG) application that allows users to upload documents, generate embeddings, and perform semantic search using vector similarity.
 
-## Architecture
-
----
-
 ## Architecture Overview
 
 ```text
@@ -35,9 +31,6 @@ PostgreSQL + pgvector
  v
 Semantic Search
 ```
-
----
-
 ## Tech Stack
 
 - Java / Spring Boot
@@ -67,11 +60,10 @@ Semantic Search
 docker compose up
 ```
 Services:
-
-Frontend: http://localhost:5173
-Backend: http://localhost:8080
-PostgreSQL: localhost:5432
-Ollama: localhost:11434
+* Frontend: http://localhost:5173
+* Backend: http://localhost:8080
+* PostgreSQL: localhost:5432
+* Ollama: localhost:11434
 
 
 ## Key Concepts Demonstrated
