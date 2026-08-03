@@ -1,9 +1,7 @@
 import { useState } from "react";
-import {
-  searchDocuments,
-  type SearchResult
-} from "../services/searchService";
-
+import { searchDocuments } from "../services/searchService";
+import type { SearchResult } from "../services/searchService";
+import "./Search.css";
 
 export default function Search() {
 
@@ -32,41 +30,75 @@ export default function Search() {
 
 
   return (
-    <div>
+    <div className="search-container">
 
-      <h2>Document Search</h2>
+      <div className="search-card">
 
-      <input
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Ask a question..."
-      />
+        <h1>
+          📄 Document Assistant
+        </h1>
 
-      <button onClick={handleSearch}>
-        Search
-      </button>
+        <p className="subtitle">
+          Ask questions about your uploaded documents
+        </p>
 
 
-      {loading && (
-        <p>Searching...</p>
-      )}
+        <div className="search-box">
 
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Ask a question..."
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSearch();
+              }
+            }}
+          />
 
-      {results.map((result, index) => (
-        <div key={index}>
-          <hr />
-          <p>
-            {result.content}
-          </p>
-
-          {result.score && (
-            <small>
-              Score: {result.score}
-            </small>
-          )}
+          <button onClick={handleSearch}>
+            Search
+          </button>
 
         </div>
-      ))}
+
+
+        {loading && (
+          <div className="loading">
+            Searching documents...
+          </div>
+        )}
+
+
+        <div className="results">
+
+          {results.map((result, index) => (
+
+            <div className="result-card" key={index}>
+
+              <div className="result-header">
+                Result {index + 1}
+              </div>
+
+
+              <p>
+                {result.content}
+              </p>
+
+
+              {result.score !== null && (
+                <small>
+                  Similarity: {result.score}
+                </small>
+              )}
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </div>
 
     </div>
   );

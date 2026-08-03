@@ -1,0 +1,151 @@
+.upload-card {
+
+    background: white;
+
+    width: 800px;
+
+    padding: 32px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.08);
+
+    margin-bottom: 30px;
+}
+
+
+.upload-card h2 {
+
+    margin-bottom: 8px;
+
+}
+
+
+.upload-description {
+
+    color: #64748b;
+
+    margin-bottom: 24px;
+
+}
+
+
+.file-drop-zone {
+
+    height: 160px;
+
+    border: 2px dashed #2563eb;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background: #f8fafc;
+
+    cursor: pointer;
+
+    transition: background 0.2s;
+
+}
+
+
+.file-drop-zone:hover {
+
+    background: #eff6ff;
+
+}
+
+
+.file-drop-zone input {
+
+    display: none;
+
+}
+
+
+.upload-icon {
+
+    font-size: 36px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.file-icon {
+
+    font-size: 36px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.file-drop-zone p {
+
+    margin: 6px 0;
+
+    color: #64748b;
+
+}
+
+
+.upload-card button {
+
+    margin-top: 20px;
+
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    border: none;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+}
+
+
+.upload-card button:hover {
+
+    background: #1d4ed8;
+
+}
+
+
+.upload-card button:disabled {
+
+    background: #94a3b8;
+
+    cursor: not-allowed;
+
+}
+
+
+.upload-message {
+
+    margin-top: 20px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    background: #f1f5f9;
+
+    color: #334155;
+
+}
