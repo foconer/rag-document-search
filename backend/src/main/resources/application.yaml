@@ -1,3 +1,11 @@
 spring:
   application:
     name: rag-backend
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+
+ollama:
+  url: http://ollama:11434
+  model: nomic-embed-text

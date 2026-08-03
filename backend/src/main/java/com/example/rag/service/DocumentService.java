@@ -16,11 +16,14 @@ public class DocumentService {
 
     private final TextCleanupService textCleanupService;
     private final ChunkingService chunkingService;
+    private final EmbeddingService embeddingService;
 
     public DocumentService(TextCleanupService textCleanupService,
-        ChunkingService chunkingService) {
+        ChunkingService chunkingService,
+        EmbeddingService embeddingService) {
         this.textCleanupService = textCleanupService;
         this.chunkingService = chunkingService;
+        this.embeddingService = embeddingService;
     }
 
     public UploadResponse upload(MultipartFile file) {
@@ -35,14 +38,22 @@ public class DocumentService {
         
             List<DocumentChunk> chunks = chunkingService.chunk(cleanedText, 500);
 
-            chunks.forEach(chunk ->
+            chunks.forEach(chunk -> {
+
+                List<Double> embedding =
+                        embeddingService.createEmbedding(
+                                chunk.getContent()
+                        );
+    
                 System.out.println(
                         "Chunk "
                         + chunk.getChunkNumber()
                         + " tokens="
                         + chunk.getTokenCount()
-                )
-            );
+                        + " embeddingSize="
+                        + embedding.size()
+                );
+            });
         
             return new UploadResponse(
                     file.getOriginalFilename(),
