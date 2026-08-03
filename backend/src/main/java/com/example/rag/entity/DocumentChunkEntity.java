@@ -1,7 +1,10 @@
 package com.example.rag.entity;
 
 import jakarta.persistence.*;
-import com.pgvector.PGvector;
+
+import org.hibernate.annotations.Array;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @Entity
 @Table(name = "document_chunks")
@@ -20,8 +23,10 @@ public class DocumentChunkEntity {
     @Column(nullable = false)
     private Integer tokenCount;
 
-    @Column(columnDefinition = "vector(768)")
-    private PGvector embedding;
+    @JdbcTypeCode(SqlTypes.VECTOR)
+    @Array(length = 768) // Match your embedding dimensions exactly (e.g., 768 or 1536)
+    @Column(name = "embedding")
+    private float[] embedding;
 
     public DocumentChunkEntity() {
     }
@@ -30,7 +35,7 @@ public class DocumentChunkEntity {
             String content,
             Integer chunkNumber,
             Integer tokenCount,
-            PGvector embedding) {
+            float[] embedding) {
         this.content = content;
         this.chunkNumber = chunkNumber;
         this.tokenCount = tokenCount;
@@ -53,7 +58,7 @@ public class DocumentChunkEntity {
         return tokenCount;
     }
 
-    public PGvector getEmbedding() {
+    public  float[] getEmbedding() {
         return embedding;
     }
 
@@ -73,7 +78,7 @@ public class DocumentChunkEntity {
         this.tokenCount = tokenCount;
     }
 
-    public void setEmbedding(PGvector embedding) {
+    public void setEmbedding(float[] embedding) {
         this.embedding = embedding;
     }
 }

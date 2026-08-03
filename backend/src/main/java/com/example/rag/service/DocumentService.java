@@ -13,7 +13,6 @@ import java.util.List;
 
 import com.example.rag.model.DocumentChunk;
 import com.example.rag.repository.DocumentChunkRepository;
-import com.pgvector.PGvector;
 
 @Service
 public class DocumentService {
@@ -64,7 +63,7 @@ public class DocumentService {
                   vector[i] = embedding.get(i).floatValue();
                 }
 
-                entity.setEmbedding(new PGvector(vector));
+                entity.setEmbedding(vector);
 
                 documentChunkRepository.save(entity);
     

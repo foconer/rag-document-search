@@ -16,7 +16,10 @@ spring:
     hibernate:
       ddl-auto: validate
     show-sql: true
-
+    properties:
+      hibernate:
+        type:
+          preferred_array_jdbc_type: "ARRAY"
 ollama:
   url: http://ollama:11434
   model: nomic-embed-text
