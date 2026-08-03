@@ -32,7 +32,6 @@ PostgreSQL + pgvector
 Semantic Search
 ```
 ## Tech Stack
-
 - Java / Spring Boot
 - Apache PDFBox (extracting text)
 - jtokkit (tokenization)
@@ -42,10 +41,7 @@ Semantic Search
 - Docker Compose
 - Flyway
 
-
-
 ## Features
-
 - Upload documents
 - Extract and chunk text
 - Generate embeddings using Ollama
@@ -55,21 +51,33 @@ Semantic Search
 ## Local Setup
 
 ### Start Services
-
 ```bash
 docker compose up
 ```
-Services:
-* Frontend: http://localhost:5173
-* Backend: http://localhost:8080
-* PostgreSQL: localhost:5432
-* Ollama: localhost:11434
+### Services:
+- Frontend: [http://localhost:5173](http://localhost:5173)
+- Backend: [http://localhost:8080](http://localhost:8080)
+- PostgreSQL: localhost:5432
+- Ollama: localhost:11434
+### Verify Ollama models
+```
+% docker exec -it rag-ollama ollama list
 
-
+NAME                       ID              SIZE      MODIFIED      
+nomic-embed-text:latest    0a109f422b47    274 MB    5 minutes ago    
+```
+### Verify embeddings
+```
+% docker exec -it rag-postgres psql -U raguser -d ragdb
+psql (17.10 (Debian 17.10-1.pgdg12+1))
+Type "help" for help.
+ 
+ragdb=# \dt
+ragdb=# \d document_chunks
+ragdb=# SELECT vector_dims(embedding)
+```
 ## Key Concepts Demonstrated
-
 This project demonstrates:
-
 - Retrieval-Augmented Generation (RAG)
 - Semantic search
 - Vector embeddings
